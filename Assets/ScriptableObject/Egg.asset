@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Egg
   m_EditorClassIdentifier: 
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  points: 2
+  points: 1

@@ -21,11 +21,10 @@ public class DroppableItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-
         if (collision.tag == "Player")
         {
             item.Interact(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }
