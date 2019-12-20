@@ -6,6 +6,8 @@ public class DroppableItem : MonoBehaviour
 {
     public Item item;
     public SpriteRenderer sprite;
+    public float dropSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,11 @@ public class DroppableItem : MonoBehaviour
 
         sprite.sprite = item.image;
         gameObject.name = item.name;
+    }
+
+    void Update()
+    {
+        transform.position -= transform.up * Time.deltaTime * dropSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

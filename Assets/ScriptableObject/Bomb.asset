@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab52b475c5bf7dc458cc01c5a75e2364, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  image: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  damage: 5
+  image: {fileID: 21300000, guid: ebc49015a7952554599c575cd41a8d72, type: 3}
