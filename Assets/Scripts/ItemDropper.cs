@@ -93,6 +93,9 @@ public class ItemDropper : MonoBehaviour
                 currentDropInterval -= dropSpeedInterval;
                 currentDropInterval = Mathf.Round(currentDropInterval * 100f) / 100f;
             }
+
+            if (currentDropInterval < minDropInterval)
+                currentDropInterval = minDropInterval;
         }
     }
 }
