@@ -15,7 +15,7 @@ public class PlayerLogic : MonoBehaviour
 
     void Awake()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; //resets the timescale that is stopped on death
     }
 
     void Start()
@@ -57,7 +57,7 @@ public class PlayerLogic : MonoBehaviour
 
     private void Death()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0; //stops the items from falling when dead
         gameOverCanvas.SetActive(true);
     }
 }
