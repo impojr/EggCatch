@@ -114,11 +114,12 @@ public class ItemDropper : MonoBehaviour
     /// Will determine whether or not to drop a bomb alongside the egg based on chance.
     /// Will increase bomb drop chance after certain amount of item drops
     /// </summary>
-    /// <param name="lineItemsForBombToDrop">The lines of items already dropped</param>
-    /// <param name="firstBomb">Is this the first bomb to drop alongside the egg?</param>
-    private void RandomlyDropBombFromPercentage(int lineItemsForBombToDrop, ref int chanceOfBomb, int maxBombChance)
+    /// <param name="lineItemsNeededForBombToDrop">The lines of items already dropped</param>
+    /// <param name="chanceOfBomb">Current chance for bomb to drop</param>
+    /// <param name="maxBombChance">Maximum chance for bomb to drop</param>
+    private void RandomlyDropBombFromPercentage(int lineItemsNeededForBombToDrop, ref int chanceOfBomb, int maxBombChance)
     {
-        if (linesOfItemsDropped >= lineItemsForBombToDrop)
+        if (linesOfItemsDropped >= lineItemsNeededForBombToDrop)
         {
             if (Random.Range(0, chanceOfBomb) == 0)
             {
