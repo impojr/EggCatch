@@ -20,7 +20,7 @@ public class ItemDropper : MonoBehaviour
     [Header("Drop Chance Parameters")]
     [Space]
     [Tooltip("Golden Egg will drop in one every X eggs")]
-    public int goldenEggDropRate = 10;
+    public int itemsBetweenGoldenEggDrop = 10;
     [Tooltip("A 1 in chanceOfBomb chance of dropping first bomb")]
     public int chanceOfFirstBomb = 3;
     [Tooltip("A 1 in chanceOfBomb chance of dropping second bomb")]
@@ -30,7 +30,11 @@ public class ItemDropper : MonoBehaviour
     [Tooltip("The second bomb won't start the drop logic until this many lines of items have dropped")]
     public int linesOfItemsDroppedBeforeSecondBombDrop = 50;
     [Tooltip("Bomb drop chance will increase in one every x eggs")]
-    public int bombDropIncreaseRate = 20;
+    public int itemsBetweenBombDropIncrease = 20;
+    [Tooltip("The maximum chance for the first bomb is a 1 in X chance")]
+    public int maxChanceOfFirstBomb = 1;
+    [Tooltip("The maximum chance for the second bomb is a 1 in X chance")]
+    public int maxChanceOfSecondBomb = 2;
 
     private int linesOfItemsDropped = 0;
     private float currentDropInterval;
@@ -58,8 +62,8 @@ public class ItemDropper : MonoBehaviour
             availableDropPositions = CreateDropLocationList();
 
             DropEgg();
-            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeFirstBombDrop, true);
-            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeSecondBombDrop, false);
+            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeFirstBombDrop, ref chanceOfFirstBomb, maxChanceOfFirstBomb);
+            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeSecondBombDrop, ref chanceOfSecondBomb, maxChanceOfSecondBomb);
 
             linesOfItemsDropped++;
             UpdateDropInterval();
@@ -80,13 +84,7 @@ public class ItemDropper : MonoBehaviour
 
     private void DropEgg()
     {
-        int positionToDropIndex = Random.Range(0, availableDropPositions.Count);
-        Transform positionToDrop = availableDropPositions[positionToDropIndex];
-
-        availableDropPositions.RemoveAt(positionToDropIndex);
-
-        GameObject eggToDrop = GetEggTypeToDrop();
-        GameObject eggItem = Instantiate(eggToDrop, positionToDrop.position, Quaternion.identity, positionToDrop);
+        DropItem(GetEggTypeToDrop());
     }
 
     private GameObject GetEggTypeToDrop()
@@ -94,47 +92,42 @@ public class ItemDropper : MonoBehaviour
         if (linesOfItemsDropped == 0)
             return egg;
 
-        return linesOfItemsDropped % goldenEggDropRate == 0 ? goldenEgg : egg;
+        return linesOfItemsDropped % itemsBetweenGoldenEggDrop == 0 ? goldenEgg : egg;
+    }
+
+    /// <summary>
+    /// Drops an item based on the available lanes
+    /// Will remove the lane from the available drop positions when instantiated
+    /// </summary>
+    /// <param name="itemToDrop">Type of item that will drop</param>
+    private void DropItem(GameObject itemToDrop)
+    {
+        int positionToDropIndex = Random.Range(0, availableDropPositions.Count);
+        Transform positionToDrop = availableDropPositions[positionToDropIndex];
+
+        availableDropPositions.RemoveAt(positionToDropIndex);
+
+        GameObject droppedItem = Instantiate(itemToDrop, positionToDrop.position, Quaternion.identity, positionToDrop);
     }
 
     /// <summary>
     /// Will determine whether or not to drop a bomb alongside the egg based on chance.
     /// Will increase bomb drop chance after certain amount of item drops
     /// </summary>
-    /// <param name="lineItemsDropped">The lines of items already dropped</param>
+    /// <param name="lineItemsForBombToDrop">The lines of items already dropped</param>
     /// <param name="firstBomb">Is this the first bomb to drop alongside the egg?</param>
-    private void RandomlyDropBombFromPercentage(int lineItemsDropped, bool firstBomb)
+    private void RandomlyDropBombFromPercentage(int lineItemsForBombToDrop, ref int chanceOfBomb, int maxBombChance)
     {
-        int chanceOfBomb;
-
-        if (firstBomb)
-        {
-            chanceOfBomb = chanceOfFirstBomb;
-        } else
-        {
-            chanceOfBomb = chanceOfSecondBomb;
-        }
-
-        if (linesOfItemsDropped >= lineItemsDropped)
+        if (linesOfItemsDropped >= lineItemsForBombToDrop)
         {
             if (Random.Range(0, chanceOfBomb) == 0)
             {
-                int positionToDropIndex = Random.Range(0, availableDropPositions.Count);
-                Transform positionToDrop = availableDropPositions[positionToDropIndex];
-                availableDropPositions.RemoveAt(positionToDropIndex);
-
-                GameObject bombItem = Instantiate(bomb, positionToDrop.position, Quaternion.identity, positionToDrop);
+                DropItem(bomb);
             }
 
-            if (linesOfItemsDropped % bombDropIncreaseRate == 0)
+            if (linesOfItemsDropped % itemsBetweenBombDropIncrease == 0)
             {
-                if (firstBomb)
-                {
-                    chanceOfFirstBomb = chanceOfFirstBomb == 1 ? 1 : chanceOfFirstBomb - 1;
-                } else
-                {
-                    chanceOfSecondBomb = chanceOfSecondBomb == 2 ? 2 : chanceOfSecondBomb - 1;
-                }
+                chanceOfBomb = chanceOfBomb == maxBombChance ? maxBombChance : chanceOfFirstBomb - 1;
             }
         }
     }
