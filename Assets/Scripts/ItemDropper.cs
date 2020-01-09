@@ -62,8 +62,8 @@ public class ItemDropper : MonoBehaviour
             availableDropPositions = CreateDropLocationList();
 
             DropEgg();
-            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeFirstBombDrop, ref chanceOfFirstBomb, maxChanceOfFirstBomb);
-            RandomlyDropBombFromPercentage(linesOfItemsDroppedBeforeSecondBombDrop, ref chanceOfSecondBomb, maxChanceOfSecondBomb);
+            RandomlyDropBombFromPercentageAndUpdateDropChance(linesOfItemsDroppedBeforeFirstBombDrop, ref chanceOfFirstBomb, maxChanceOfFirstBomb);
+            RandomlyDropBombFromPercentageAndUpdateDropChance(linesOfItemsDroppedBeforeSecondBombDrop, ref chanceOfSecondBomb, maxChanceOfSecondBomb);
 
             linesOfItemsDropped++;
             UpdateDropInterval();
@@ -115,9 +115,9 @@ public class ItemDropper : MonoBehaviour
     /// Will increase bomb drop chance after certain amount of item drops
     /// </summary>
     /// <param name="lineItemsNeededForBombToDrop">The lines of items already dropped</param>
-    /// <param name="chanceOfBomb">Current chance for bomb to drop</param>
+    /// <param name="chanceOfBomb">Current chance for bomb to drop, will be changed in the function</param>
     /// <param name="maxBombChance">Maximum chance for bomb to drop</param>
-    private void RandomlyDropBombFromPercentage(int lineItemsNeededForBombToDrop, ref int chanceOfBomb, int maxBombChance)
+    private void RandomlyDropBombFromPercentageAndUpdateDropChance(int lineItemsNeededForBombToDrop, ref int chanceOfBomb, int maxBombChance)
     {
         if (linesOfItemsDropped >= lineItemsNeededForBombToDrop)
         {
