@@ -1,0 +1,25 @@
+Background Music: Wholesome by Kevin MacLeod - https://incompetech.filmmusic.io/song/5050-wholesome/
+UI Audio: Kenney UI Audio pack - https://kenney.nl/assets/ui-audio
+Beehive hit sound: ui interface negative by JavierZumer - https://freesound.org/people/JavierZumer/sounds/257235/
+Egg catch sound: ui interface positive by JavierZumer - https://freesound.org/people/JavierZumer/sounds/257227/
+Lose sound: Jingle_Lose_01.wav by LittleRobotSoundFactory - https://freesound.org/people/LittleRobotSoundFactory/sounds/270334/
+
+Music from https://filmmusic.io
+"Wholesome" by Kevin MacLeod (https://incompetech.com)
+License: CC BY (http://creativecommons.org/licenses/by/4.0/)
+
+Ui Audio from https://kenney.nl
+"UI Audio" by Kenney (https://kenney.nl/assets/ui-audio)
+License: CC0 1.0 BY (https://creativecommons.org/publicdomain/zero/1.0/)
+
+Beehit hit sound from https://freesound.org/
+"ui interface negative" by JavierZumer (https://freesound.org/people/JavierZumer/sounds/257235/)
+License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+
+Egg catch sound from https://freesound.org/
+"ui interface positive" JavierZumer (https://freesound.org/people/JavierZumer/sounds/257227/)
+License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+
+Lose sound from https://freesound.org/
+"Jingle_Lose_01.wav" by LittleRobotSoundFactory
+License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a580686d657fb64ab08c333251881b2, type: 3}
   m_Name: Egg
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 4677c3d3b55629d4ebe4e082fe2393a4, type: 3}
+  image: {fileID: 21300000, guid: 031a1d4e7fe76a148b7d0089663dac61, type: 3}
   points: 1
