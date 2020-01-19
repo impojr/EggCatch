@@ -12,6 +12,7 @@ public class PlayerLogic : MonoBehaviour
     public int lives = 3;
 
     private int points = 0;
+    private Animator animator;
 
     void Awake()
     {
@@ -20,18 +21,21 @@ public class PlayerLogic : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         UpdatePointsText();
         UpdateLivesText();
     }
 
     public void AddPoints(int pointsToAdd)
     {
+        animator.SetTrigger("CollectedEgg");
         points += pointsToAdd;
         UpdatePointsText();
     }
 
     public void TakeLife()
     {
+        animator.SetTrigger("CollectedBomb");
         lives--;
         UpdateLivesText();
         if (lives <= 0)
