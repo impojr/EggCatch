@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GoldenEgg
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: d262733d709dafd48aff2cd8cde12f4e, type: 3}
+  collectSound: {fileID: 8300000, guid: d753b32ee4f39ee46afe7741540f97bb, type: 3}
   points: 3
