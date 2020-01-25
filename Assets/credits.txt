@@ -23,3 +23,6 @@ License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
 Lose sound from https://freesound.org/
 "Jingle_Lose_01.wav" by LittleRobotSoundFactory
 License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+
+Game font from https://www.dafont.com/
+"Pink Lemonade" by Ivet Ramirez (https://www.dafont.com/pink-lemonade.font?l[]=10&l[]=1)
