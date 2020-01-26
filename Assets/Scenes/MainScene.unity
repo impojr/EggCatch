@@ -911,11 +911,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 740778460, guid: 50891bc8bc44d824887daf69d15457d8, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5dedf4fb2d19f9c4d8752c35da1c6c11,
+    - target: {fileID: 1209570205322530779, guid: 50891bc8bc44d824887daf69d15457d8,
         type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209570205322530779, guid: 50891bc8bc44d824887daf69d15457d8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.9000244
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50891bc8bc44d824887daf69d15457d8, type: 3}
 --- !u!1001 &5608436457980109096
@@ -929,6 +934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608436458134981840, guid: 6b3e21e43ab483c479a2fa23f46366d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5608436458134981844, guid: 6b3e21e43ab483c479a2fa23f46366d1,
         type: 3}
